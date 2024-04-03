@@ -1,0 +1,59 @@
+<header class="py-5">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://graphicsfamily.com/wp-content/uploads/edd/2021/07/Professional-E-Commerce-Shoes-Banner-Design-1536x864.jpg"
+                    class="d-block w-100" height="300px" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://graphicsfamily.com/wp-content/uploads/edd/2022/12/E-commerce-Product-Banner-Design-Download-scaled.jpg"
+                    class="d-block w-100" height="300px" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://img.freepik.com/premium-psd/shoe-sale-facebook-cover-template-banner_555512-235.jpg"
+                    class="d-block w-100" height="300px" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</header>
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let i of array1">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top" style="cursor: pointer;mix-blend-mode: multiply;" routerLink="/view/{{i.id}}" src={{i.image}} width="100%" height="180px" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4" >
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{i.title}}</h5>
+                            <!-- Product price-->
+                            {{i.price | currency:'INR'}}
+                        </div>
+                        
+                    </div>
+                    <!-- Product actions-->
+                    <div class="footer d-flex justify-content-between p-2">
+                        <button (click)="addToWishList(i)" class="btn btn-light"><i class="fa-solid fa-heart-circle-plus fa-lg" style="color: #e12d2d;"></i></button>
+                        <button  class="btn btn-light" (click)="addToCart(i)"><i class="fa-solid fa-cart-plus fa-lg" style="color: #0aa476;"></i></button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</section>

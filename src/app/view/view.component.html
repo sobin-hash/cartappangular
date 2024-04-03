@@ -1,0 +1,28 @@
+ <!-- Product section-->
+ <section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center"   >
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src={{product.image}} alt="..." width="50%" height="520px"/></div>
+            <div class="col-md-6">
+                <!-- <div class="small mb-1">SKU: BST-498</div> -->
+                <h1 class="display-5 fw-bolder">{{product.title}}</h1>
+                <div class="fs-5 mb-5">
+                    <span class="pe-2">{{product.price|currency:'INR'}}</span> 
+                    
+                </div>
+                <p class="lead">{{product.description}}</p>
+                <div class="d-flex justify-content-between">
+                    
+                    <button class="btn btn-outline-dark flex-shrink-0"(click)="addToWish(product)" type="button">
+                        <i class="fa-solid fa-heart-circle-plus fa-lg" style="color: #d25675;"></i>
+                        Add to wishlist
+                    </button>
+                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                        <i class="fa-solid fa-cart-plus fa-lg" style="color: #0aa476;"></i>
+                        Add to cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

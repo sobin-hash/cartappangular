@@ -1,0 +1,36 @@
+<div class="p-5 row ">
+    <div class="col-md-8">
+        <h1>Cart Summary</h1>
+        <table class="table table-bordered shadow w-100" *ngIf="cartproducts.length>0; else elsediv">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Quantity</th>
+                <th>Total price</th>
+            </tr>
+            <tr *ngFor="let i of cartproducts;index as id">
+                <td>{{id+1}}</td>
+                <td>{{i.title}}</td>
+                <td>{{i.price}}</td>
+                <td><img src="{{i.image}}" height="100px" alt=""></td>
+                <td>{{i.quantity}}</td>
+                <td>{{i.totalPrice}}</td>
+                <td>
+                    <i class="fa-solid fa-trash fa-lg" (click)="delCartItem(i._id)" style="color: #d30d0d;"></i>
+                </td>
+
+            </tr>
+        </table>
+        <div class="text-danger">
+            <ng-template #elsediv>
+                <h2 class="text-danger text-center">No Items in cart</h2>
+            </ng-template>
+        </div>
+    </div>
+    <div>
+
+    </div>
+
+</div>

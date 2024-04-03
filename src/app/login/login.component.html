@@ -1,0 +1,33 @@
+
+
+<div class="w-100 d-flex justify-content-center align-items-center" style="height: 89vh;">
+    <div class="row w-50 d-flex justify-content-center align-items-center"  style="background-color: rgb(138, 226, 198); border-radius: 10px;">
+        <div class="col lg-6 w-50">
+            <img src="https://static.vecteezy.com/system/resources/previews/002/437/945/large_2x/illustration-of-a-login-account-free-vector.jpg" alt="" class="img-fluid" style="border-radius: 15px;">
+
+        </div>
+        <div class="col lg-6 p-3 mt-5">
+            <h3>Login</h3>
+            <form [formGroup]="loginForm" (ngSubmit)="getFormData()">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" formControlName="email" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                    <div class="text-danger" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Invalid Email</div>
+
+                  </div>
+                  <div class="form-floating">
+                    <input type="password" class="form-control" formControlName="password" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                    <div class="text-danger" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Invalid Password</div>
+
+                  </div>
+                  <div class="mt-3 d-flex justify-content-between ">
+                    <button type="submit" class="btn btn-outline-success mb-5" [disabled]="loginForm.invalid">Login</button>
+                    <a routerLink="/register" class="text-decoration-none">New User?</a>
+                  </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
