@@ -12,7 +12,7 @@
             <!-- //search -->
                 <form class="d-flex ms-auto" >
     <!-- this.sendSearchEvent.emit(this.searchtext); -->
-    <input class="form-control me-2" name="searchtext" (ngModelChange)="searchEvent()" type="search"  [(ngModel)]="searchtext" placeholder="Search" aria-label="Search">
+    <input class="form-control me-2" name="searchtext" (keyup)="searchEvent()" type="search"  [(ngModel)]="searchtext" placeholder="Search" aria-label="Search">
                 </form>
 
 
