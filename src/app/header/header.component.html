@@ -8,9 +8,15 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex ms-auto">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+
+            <!-- //search -->
+                <form class="d-flex ms-auto" >
+    <!-- this.sendSearchEvent.emit(this.searchtext); -->
+    <input class="form-control me-2" name="searchtext" (ngModelChange)="searchEvent()" type="search"  [(ngModel)]="searchtext" placeholder="Search" aria-label="Search">
                 </form>
+
+
+                
                 <ul class="navbar-nav">
                     <li class="nav-item mx-2">
                         <button class="btn btn-outline-light position-relative" routerLink="/wish"> 
@@ -37,7 +43,7 @@
                               Login
                             </ng-template>
                           </button>
-                          <button class="btn me-1 p-3  rounded border-dark btn-outline-dark text-uppercase" *ngIf="username">
+                          <button (click)="logOut()" class="btn me-1 p-3  rounded border-dark btn-outline-dark text-uppercase"  *ngIf="username">
                             LogOut
                         </button>
                     </li>

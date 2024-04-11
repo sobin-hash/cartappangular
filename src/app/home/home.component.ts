@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
 import { OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { PipePipe } from '../searchpipe/pipe.pipe';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,6 +11,8 @@ import { ToastrService } from 'ngx-toastr';
 export class HomeComponent implements OnInit {
 
   array1 :any=[]
+  searchKey: any;
+  // searchtext: any;
 
   constructor(private api:ApiService,private toastr:ToastrService){
 
@@ -20,6 +23,14 @@ export class HomeComponent implements OnInit {
     this.getAllProducts()
 
   }
+
+  getSearchItem(e:any){
+    this.searchKey=e
+    console.log(e)
+
+  }
+
+  
 
   getAllProducts(){
     this.api.getAllProducts().subscribe((res)=>{

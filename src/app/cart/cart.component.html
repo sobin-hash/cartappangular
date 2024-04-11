@@ -1,3 +1,5 @@
+
+<app-header></app-header>
 <div class="p-5 row ">
     <div class="col-md-8">
         <h1>Cart Summary</h1>
@@ -13,21 +15,77 @@
             <tr *ngFor="let i of cartproducts;index as id">
                 <td>{{id+1}}</td>
                 <td>{{i.title}}</td>
-                <td>{{i.price}}</td>
+                <td>{{i.price|currency:'INR'}}</td>
                 <td><img src="{{i.image}}" height="100px" alt=""></td>
-                <td>{{i.quantity}}</td>
-                <td>{{i.totalPrice}}</td>
+                <td>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <button (click)="decreaseCartQuantity(i._id)">-</button>
+                        <input class="form-control" readonly type="text" value="{{i.quantity}}" style=width:50px;>
+                        <button (click)="increaseCartQuantity(i._id)">+</button>
+                    </div>
+
+                </td>
+                <td>{{i.totalPrice|currency:'INR'}}</td>
                 <td>
                     <i class="fa-solid fa-trash fa-lg" (click)="delCartItem(i._id)" style="color: #d30d0d;"></i>
+
                 </td>
 
             </tr>
         </table>
+        <div class="d-flex justify-content-between p-5 mx-5">
+            <button routerLink="/home" class="btn btn-primary">Continue shoppping</button>
+            <button class=" btn btn-warning" (click)="clearCart()">Clear cart</button>
+        </div>
+
+
+
         <div class="text-danger">
             <ng-template #elsediv>
                 <h2 class="text-danger text-center">No Items in cart</h2>
             </ng-template>
         </div>
+    </div>
+
+    <div class="col-md-4 mt-5  h-100" style="height: 200px;background-color: whitesmoke;">
+        <h1>Total amount</h1>
+        <div>
+            {{totalAmount|currency:'INR'}}
+        </div>
+        <h6 class="mt-3 " *ngIf="!cartCoupon"><span class="btn btn-link" (click)="getCoupons()">Offers<i class="fa-solid fa-tag"></i></span>
+        </h6>
+        <div *ngIf="cartCoupon" class="container">
+            <ng-container *ngIf="totalAmount>0 && totalAmount<250 && !couponClickStatus">
+                <img class="img-fluid p-3" (click)="getDiscount10()" style="height: 200px;width: 100%;"
+                    
+                    src="https://ritterkrieg.com/wp-content/uploads/2015/11/7-versatile-choices-10-off-coupon.jpg"
+                    alt="">
+            </ng-container>
+
+            <ng-container *ngIf="totalAmount>250 && totalAmount<500 && !couponClickStatus">
+                <img class="img-fluid p-3" (click)="getDiscount25()" style="height: 200px;width: 100%;"
+                src="https://i0.wp.com/www.titanui.com/wp-content/uploads/2016/06/18/Flat-Red-50-Coupon-Vector.png?resize=546%2C400"
+                    alt="">
+                    
+            </ng-container>
+            <ng-container *ngIf="totalAmount>500 && !couponClickStatus">
+                <img class="img-fluid p-3" (click)="getDiscount50()" style="height: 200px;width: 100%;"
+                    src="https://podanys.com/wp-content/uploads/2020/01/coupon-033120.jpg"
+                    alt="">
+            </ng-container>
+
+        </div>
+        <div class="d-grid">
+            <button class="btn btn-success" (click)="clickCheckout()">
+                Checkout
+
+
+            </button>
+        </div>
+
+
+
+
     </div>
     <div>
 

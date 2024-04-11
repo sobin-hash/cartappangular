@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ApiService {
 
-  SERVER_URL="http://localhost:3000"
+  SERVER_URL="https://cartserverangular.onrender.com"
   wishlistCount = new BehaviorSubject(0)
   cartCount = new BehaviorSubject(0)
 
@@ -87,7 +87,6 @@ getCartApi(){
   return this.http.get(`${this.SERVER_URL}/getcartlist`,this.appendTokenToHeader())     
 
 }
-
 getCartCountApi(){
   this.http.get(`${this.SERVER_URL}/getcartlist`,this.appendTokenToHeader()).subscribe((res:any)=>{
     this.cartCount.next(res.length)
@@ -99,6 +98,27 @@ getCartCountApi(){
 
 delCartApi(id:any){
   return this.http.delete(`${this.SERVER_URL}/delcart/${id}`,this.appendTokenToHeader())     
+
+}
+
+clearCartApi(){
+  return this.http.delete(`${this.SERVER_URL}/clearcart`,this.appendTokenToHeader())     
+
+}
+
+increaseCart(id:any){
+  return this.http.get(`${this.SERVER_URL}/cart-increase/${id}`,this.appendTokenToHeader())     
+
+
+}
+decreaseCart(id:any){
+  return this.http.get(`${this.SERVER_URL}/cart-decrease/${id}`,this.appendTokenToHeader())     
+
+
+}
+
+isLoggedIn(){
+  return !!sessionStorage.getItem('token')
 
 }
 

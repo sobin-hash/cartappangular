@@ -17,6 +17,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { PipePipe } from './searchpipe/pipe.pipe';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +32,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CartComponent,
     WishlistComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    CheckoutComponent,
+    PipePipe
   ],
   imports: [
     
@@ -38,7 +44,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     FormsModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPayPalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

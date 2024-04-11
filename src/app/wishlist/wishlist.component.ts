@@ -53,5 +53,31 @@ export class WishlistComponent implements OnInit{
   }
 
 
+  addToCart(data:any){
+    if(sessionStorage.getItem('token')){
+      const {id,title,price,image}=data
+      const products = {id,title,image,price,quantity:1}
+      this.api.addToCartApi(products).subscribe({
+        next:(res:any)=>{
+          console.log(res)
+          this.api.getCartCountApi()
+          this.toastr.success("item added to cart")
+          this.deleteWish(data._id)
+          // this.api.getWishListCountApi()
+          this.api.getCartCountApi()
+
+
+          
+        },
+        error:(err:any)=>{
+          this.toastr.error(err.error)
+        }
+      })
+    }else{
+      this.toastr.warning("Please Login First!!")
+    }
+  }
+
+
 
 }

@@ -1,3 +1,6 @@
+<app-header (sendSearchEvent)="getSearchItem($event)"></app-header>
+<!-- <h1 class="text-danger">{{searchKey}}</h1> -->
+
 <header class="py-5">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -30,7 +33,7 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <div class="col mb-5" *ngFor="let i of array1">
+            <div class="col mb-5" *ngFor="let i of array1 | pipe :searchKey">
                 <div class="card h-100">
                     <!-- Product image-->
                     <img class="card-img-top" style="cursor: pointer;mix-blend-mode: multiply;" routerLink="/view/{{i.id}}" src={{i.image}} width="100%" height="180px" alt="..." />

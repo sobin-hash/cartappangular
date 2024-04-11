@@ -6,6 +6,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ViewComponent } from './view/view.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { authGuard } from './guards/auth.guard';
 
 
 
@@ -14,8 +16,9 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'register', component:RegistrationComponent},
   {path:'view/:id', component:ViewComponent},
-  {path:'wish',component:WishlistComponent}, 
-  {path:'cart',component:CartComponent}, 
+  {path:'wish',canActivate:[authGuard],component:WishlistComponent}, 
+  {path:'cart',canActivate:[authGuard],component:CartComponent}, 
+  {path:'checkout',canActivate:[authGuard],component:CheckoutComponent}, 
   {path:'**', redirectTo:''}
 ];
 

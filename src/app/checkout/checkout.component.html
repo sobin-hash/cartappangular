@@ -1,0 +1,40 @@
+<app-header></app-header>
+<div class="w-100 d-flex flex-column justify-content-center align-items-center p-5" style="height: 80vh;">
+    <h1>Checkout Details</h1>
+    <div>
+        <form [formGroup]="checkOutForm" *ngIf="!checkOutStatus">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">username</label>
+                <input type="text" class="form-control" formControlName="username" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputaddress" class="form-label">address</label>
+                <input type="email" class="form-control" formControlName="address" id="exampleInputAddress" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Pincode</label>
+                <input type="password" name="password" class="form-control" formControlName="pincode" id="exampleInputPassword1">
+            </div>
+            
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-warning" (click)="onCancel()">Cancel</button>
+                <button type="submit" class="btn btn-primary" (click)="onCheckOut()">CheckOut</button>
+            </div>
+            
+        </form>
+        <div *ngIf="checkOutStatus">
+            <h4>{{checkOutForm.value.username}}</h4>
+            <h4>{{checkOutForm.value.address}}</h4>
+            <h4>{{checkOutForm.value.pincode}}</h4>
+            <h4>Total : <span class="text-warning">{{total|currency:'INR'}}</span></h4>
+            <div class="mb-3">
+                <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
