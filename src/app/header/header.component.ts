@@ -4,7 +4,7 @@ import { OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Output, EventEmitter } from '@angular/core';
-import { PipePipe } from '../searchpipe/pipe.pipe';
+// import { PipePipe } from '../searchpipe/pipe.pipe';
 
 @Component({
   selector: 'app-header',
